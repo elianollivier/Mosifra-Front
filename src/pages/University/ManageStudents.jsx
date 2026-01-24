@@ -45,45 +45,39 @@ export default function UniversityClasses() {
     fetchClasses();
   }, []);
 
-  useEffect(() => {
-    if (!selectedClassId) return;
-
-    const fetchStudents = async (classId) => {
-      const headers = new Headers();
-      const jwt = getCookie("jwt");
-      headers.append("Authorization", `Bearer ${jwt}`);
-      headers.append("Content-Type", "application/json");
-
-      const payload = { class_id: String(classId) };
-
-      try {
-        const response = await fetch(
-          `${getBaseUrl()}/courses/class/students`,
-          {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify(payload),
-          }
-        );
-
-        const data = await response.json();
-
-        if (!data.success) {
-          console.error("Échec de récupération des étudiants");
-          return;
-        }
-
-        setClasses((prev) =>
-          prev.map((c) =>
-            c.id === classId ? { ...c, studentList: data.students || [] } : c
-          )
-        );
-      } catch (error) {
-        console.error("Erreur lors du fetch des étudiants :", error);
-      }
+  const fetchStudents = async (classId) => {
+    const jwt = getCookie("jwt");
+    const headers = {
+      "Authorization": `Bearer ${jwt}`,
+      "Content-Type": "application/json",
     };
 
-    fetchStudents(selectedClassId);
+    try {
+      const response = await fetch(`${getBaseUrl()}/courses/class/students`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ class_id: String(classId) }),
+      });
+
+      const data = await response.json();
+
+      if (!data.success) {
+        console.error("Échec de récupération des étudiants");
+        return;
+      }
+
+      setClasses((prev) =>
+        prev.map((c) =>
+          c.id === classId ? { ...c, studentList: data.students || [] } : c
+        )
+      );
+    } catch (error) {
+      console.error("Erreur lors du fetch des étudiants :", error);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedClassId) fetchStudents(selectedClassId);
   }, [selectedClassId]);
 
   const handleAddClass = async () => {
