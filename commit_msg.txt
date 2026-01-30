@@ -1,0 +1,1 @@
+chore: Developpeur D frontend cleanup - remove unused imports/vars, group utils imports, optional chaining, globalThis, remove fragments

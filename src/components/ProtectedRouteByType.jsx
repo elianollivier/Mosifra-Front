@@ -1,6 +1,6 @@
 import { useEffect, useState } from "preact/hooks";
 import { Route, useLocation } from "preact-iso";
-import { getUserTypeFromCookie } from "../utils.js";
+import { getUserTypeFromCookie } from "../utils";
 
 export function ProtectedRouteByType({ component: Component, allowedTypes = [], ...props }) {
   const [loading, setLoading] = useState(true);
@@ -21,7 +21,7 @@ export function ProtectedRouteByType({ component: Component, allowedTypes = [], 
     }
 
     checkAccess();
-  }, []);
+  }, [allowedTypes, location]);
 
   if (loading) return null;
 

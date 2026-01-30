@@ -1,7 +1,6 @@
 import { ChevronLeft, Plus, Trash2, Upload } from "lucide-preact";
 import { useEffect, useState } from "preact/hooks";
-import { getCookie } from "../../utils";
-import { getBaseUrl } from "../../utils";
+import { getCookie, getBaseUrl } from "../../utils";
 
 export default function UniversityClasses() {
   const [classes, setClasses] = useState([]);
@@ -26,7 +25,7 @@ export default function UniversityClasses() {
       headers.append("Authorization", `Bearer ${jwt}`);
       const options = {
         method: "GET",
-        headers: headers,
+        headers,
         redirect: "follow",
       };
 
@@ -132,7 +131,7 @@ export default function UniversityClasses() {
   };
 
   const handleDeleteClass = async (id) => {
-    const confirmed = window.confirm("Avez-vous la certitude de vouloir supprimer cette classe ? Cette action est irréversible.")
+    const confirmed = globalThis.confirm("Avez-vous la certitude de vouloir supprimer cette classe ? Cette action est irréversible.")
     if (!confirmed) return;
 
     const headers = new Headers();
@@ -145,7 +144,7 @@ export default function UniversityClasses() {
     try {
       const response = await fetch(`${getBaseUrl()}/courses/class`, {
         method: 'DELETE',
-        headers: headers,
+        headers,
         body: JSON.stringify(payload)
       })
 
@@ -158,7 +157,7 @@ export default function UniversityClasses() {
         throw new Error("Erreur lors de la suppression");
       }
 
-      window.location.reload();
+      globalThis.location.reload();
 
     } catch (e) {
       console.log(e);
@@ -201,7 +200,7 @@ export default function UniversityClasses() {
           `${getBaseUrl()}/courses/class/students`,
           {
             method: "POST",
-            headers: headers,
+            headers,
             body: JSON.stringify({ class_id: String(classId) }),
           }
         );

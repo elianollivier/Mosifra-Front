@@ -1,4 +1,4 @@
-import { House, List } from "lucide-preact"
+import { House } from "lucide-preact"
 import { useLocation } from "preact-iso"
 
 export function NotFound() {

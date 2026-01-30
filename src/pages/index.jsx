@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import { getUserTypeFromCookie } from "../utils.js";
+import { getUserTypeFromCookie } from "../utils";
 import CompanyHome from "./Company/CompanyHome.jsx";
 import StudentHome from "./Student/StudentHome.jsx";
 import UniversityHome from "./University/UniversityHome.jsx";
@@ -8,7 +8,6 @@ import Home from "./defaultindex.jsx";
 
 export function HomeRouter() {
   const [userType, setUserType] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserType = async () => {
@@ -18,8 +17,6 @@ export function HomeRouter() {
       } catch (err) {
         console.warn('Failed to fetch user type:', err);
         setUserType(null);
-      } finally {
-        setLoading(false);
       }
     };
 

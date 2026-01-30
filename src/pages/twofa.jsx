@@ -1,6 +1,7 @@
 import { ArrowRight, Binary } from "lucide-preact";
 import { useLocation } from "preact-iso";
 import { useState } from "preact/hooks";
+import { getBaseUrl } from "../utils";
 
 export function Twofa() {
   const location = useLocation();
@@ -21,7 +22,7 @@ export function Twofa() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const connectionPayload = { code: code, transaction_id: transactionId, user_type: userType, remember_me: remember };
+    const connectionPayload = { code, transaction_id: transactionId, user_type: userType, remember_me: remember };
     try {
       const response = await fetch(`${getBaseUrl()}/auth/twofa`, {
         method: "POST",
@@ -42,7 +43,7 @@ export function Twofa() {
       if (data.jwt !== null) {
         document.cookie = `jwt=${data.jwt}; path=/; max-age=${ttl};`;
 
-        window.dispatchEvent(new Event("userTypeUpdated"));
+        globalThis.dispatchEvent(new Event("userTypeUpdated"));
 
         location.route("/");
       } else {

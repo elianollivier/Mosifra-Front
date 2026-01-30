@@ -53,7 +53,6 @@ export default function ManageCandidates() {
   }
 
   return (
-    <>
       <main className="min-h-screen bg-beige-mosifra p-8">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-4xl font-bold text-vert-mosifra mb-8">Gestion des candidatures</h1>
@@ -186,6 +185,5 @@ export default function ManageCandidates() {
           </div>
         </div>
       </main>
-    </>
   )
 }

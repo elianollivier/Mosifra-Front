@@ -1,6 +1,5 @@
 import { useState } from "preact/hooks"
-import { getCookie } from "../../utils"
-import { getBaseUrl } from "../../utils"
+import { getCookie, getBaseUrl } from "../../utils"
 
 export default function SubmitInternship() {
   const [formData, setFormData] = useState({
@@ -31,8 +30,8 @@ export default function SubmitInternship() {
       course_type: formData.courseType,
       start_date: formData.startDate,
       end_date: formData.endDate,
-      min_internship_length: parseInt(formData.minDuration),
-      max_internship_length: parseInt(formData.maxDuration),
+      min_internship_length: parseInt(formData.minDuration, 10),
+      max_internship_length: parseInt(formData.maxDuration, 10),
       title: formData.title,
       description: formData.description,
       place: formData.location,
@@ -72,7 +71,6 @@ export default function SubmitInternship() {
   }
 
   return (
-    <>
       <main className="min-h-screen bg-beige-mosifra p-8">
         <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-lg border border-gray-300 p-8">
@@ -194,6 +192,5 @@ export default function SubmitInternship() {
           </div>
         </div>
       </main>
-    </>
   )
 }

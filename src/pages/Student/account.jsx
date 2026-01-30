@@ -1,6 +1,6 @@
 import { useState, useEffect } from "preact/hooks"
-import { FileText, User, Mail, Phone } from "lucide-preact"
-import { getBaseUrl } from "../../utils"
+import { User, Mail } from "lucide-preact"
+import { getBaseUrl, getCookie } from "../../utils"
 
 export default function StudentAccount() {
   const [studentData, setStudentData] = useState({
@@ -19,7 +19,7 @@ export default function StudentAccount() {
       headers.append("Authorization", `Bearer ${jwt}`);
       const options = {
         method: "GET",
-        headers: headers,
+        headers,
         redirect: "follow"
       };
 

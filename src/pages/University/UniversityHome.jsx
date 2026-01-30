@@ -14,7 +14,6 @@ export default function UniversityHome() {
   }
 
   return (
-    <>
       <main className="min-h-screen bg-beige-mosifra">
         <div className="max-w-6xl mx-auto px-4 py-16">
           <div className="mb-16">
@@ -59,6 +58,5 @@ export default function UniversityHome() {
           </div>
         </div>
       </main>
-    </>
   )
 }

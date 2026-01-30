@@ -1,8 +1,7 @@
-import { BookOpen, Send, Upload, X } from "lucide-preact"
+import { BookOpen, Send } from "lucide-preact"
 import { useLocation } from "preact-iso"
 import { useEffect, useState } from "preact/hooks"
-import { getCookie, getCourseTypes, getStudentCourseType, getUserTypeFromCookie } from "../utils"
-import { getBaseUrl } from "../utils"
+import { getCookie, getCourseTypes, getUserTypeFromCookie, getBaseUrl } from "../utils"
 
 export default function Internships() {
   const location = useLocation()
@@ -10,13 +9,8 @@ export default function Internships() {
   const [loading, setLoading] = useState(true)
   const [userType, setUserType] = useState(null)
   const [loadingUserType, setLoadingUserType] = useState(true)
-  const [selectedInternship, setSelectedInternship] = useState(null)
-  const [showApplicationModal, setShowApplicationModal] = useState(false)
-  const [applicationData, setApplicationData] = useState({
-    motivationLetter: "",
-    cv: null,
-  })
-  const [submitting, setSubmitting] = useState(false)
+  
+  
 
   useEffect(() => {
 
@@ -29,7 +23,7 @@ export default function Internships() {
 
     const fetchInternships = async () => {
       const jwt = getCookie("jwt");
-      const course_types = getCourseTypes();
+      const course_types = await getCourseTypes();
       const headers = {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${jwt}`
@@ -39,7 +33,7 @@ export default function Internships() {
         method: "POST",
         headers,
         body: JSON.stringify({
-          course_types: course_types
+          course_types
         })
       };
 
@@ -61,50 +55,23 @@ export default function Internships() {
       } catch (error) {
         console.error(error);
       }
+      finally {
+        setLoading(false)
+      }
     }
 
-    setLoading(false)
+    fetchInternships();
   }, [])
 
-  const handleApplyClick = (internship) => {
+  const handleApplyClick = () => {
     if (userType !== "student") {
       alert("Seuls les étudiants peuvent postuler à des stages.")
       return
     }
-    setSelectedInternship(internship)
-    setShowApplicationModal(true)
+    // Application flow not implemented in this demo
   }
 
-  const handleSubmitApplication = async (e) => {
-    e.preventDefault()
-    setSubmitting(true)
-
-    try {
-      const formData = new FormData()
-      formData.append("internship_id", selectedInternship.id)
-      formData.append("motivation_letter", applicationData.motivationLetter)
-      if (applicationData.cv) {
-        formData.append("cv", applicationData.cv)
-      }
-
-      // Call l'API
-
-      console.log("Application submitted:", {
-        internshipId: selectedInternship.id,
-        motivation: applicationData.motivationLetter,
-        cv: applicationData.cv?.name,
-      })
-
-      alert("Candidature envoyée avec succès!")
-      setShowApplicationModal(false)
-      setApplicationData({ motivationLetter: "", cv: null })
-    } catch (error) {
-      console.error("Error submitting application:", error)
-      alert("Erreur lors de l'envoi de la candidature.")
-    } finally {
-      setSubmitting(false)
-    }
-  }
+  
 
   if (loading) {
     return (
@@ -185,7 +152,7 @@ export default function Internships() {
                   </div>
                 ) : userType === "student" ? (
                   <button
-                    onClick={() => handleApplyClick(internship)}
+                    onClick={handleApplyClick}
                     className="w-full px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Send size={18} />

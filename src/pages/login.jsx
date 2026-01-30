@@ -16,7 +16,7 @@ export function LoginPage() {
     setIsLoading(true);
     e.preventDefault();
 
-    const connectionPayload = { login: login, password: password, remember_me: rememberMe, user_type: userType };
+    const connectionPayload = { login, password, remember_me: rememberMe, user_type: userType };
 
 
     try {

@@ -9,5 +9,5 @@ export default function SessionChecker({ children }) {
     checkSession();
   }, [pathname]);
   
-  return <>{children}</>;
+  return children;
 }

@@ -1,12 +1,10 @@
 import { LogIn } from "lucide-preact"
 import { useLocation } from "preact-iso"
-import { Footer } from "../components/footer.jsx"
 
 export default function Home() {
   const { route } = useLocation()
 
   return (
-    <>
       <div class="min-h-screen bg-beige-mosifra">
         <section class="py-20 px-4">
           <div class="max-w-4xl mx-auto text-center">
@@ -26,7 +24,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-    </>
   )
 }
 

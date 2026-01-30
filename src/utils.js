@@ -13,7 +13,7 @@ export async function getUserTypeFromCookie() {
   try {
     const response = await fetch(`${getBaseUrl()}/user/user_type`, {
       method: "GET",
-      headers: headers,
+      headers,
       redirect: "follow",
       credentials: "include",
     });
@@ -42,7 +42,7 @@ export async function checkSession() {
   try {
     const response = await fetch(`${getBaseUrl()}/auth/check_session`, {
       method: "GET",
-      headers: headers,
+      headers,
       redirect: "follow",
       credentials: "include",
     });
@@ -84,7 +84,7 @@ export function clearSessionCookies() {
     "/login",
     "/account",
   ];
-  const domains = [window.location.hostname, `.${window.location.hostname}`];
+  const domains = [globalThis.location.hostname, `.${globalThis.location.hostname}`];
 
   const names = ["jwt"];
 
@@ -106,7 +106,7 @@ export function clearSessionCookies() {
 
 export async function getCourseTypes() {
   const jwt = getCookie("jwt");
-  const userType = getUserTypeFromCookie(jwt);
+  const userType = await getUserTypeFromCookie();
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${jwt}`,
@@ -117,12 +117,14 @@ export async function getCourseTypes() {
     headers,
   };
 
+  let fetchurl = null;
   if (userType == "student") {
-    const fetchurl = `${getBaseUrl()}/user/student/course_type`;
+    fetchurl = `${getBaseUrl()}/user/student/course_type`;
   } else if (userType == "university") {
-    const fetchurl = `${getBaseUrl()}/user/university/course_types`;
+    fetchurl = `${getBaseUrl()}/user/university/course_types`;
   } else {
     console.log("L'utilisateur n'est pas autorisé à accéder à la route");
+    return null;
   }
 
   try {
@@ -134,14 +136,14 @@ export async function getCourseTypes() {
 
     const contentType = response.headers.get("content-type");
     const data =
-      contentType && contentType.includes("application/json")
+      contentType?.includes("application/json")
         ? await response.json()
         : await response.text();
     if (data.success) {
       return data.course_type;
-    } else {
+    } 
       console.log("Erreur lors de la récupération de la réponse");
-    }
+    
   } catch (error) {
     console.error(error);
   }

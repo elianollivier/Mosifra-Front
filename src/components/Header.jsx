@@ -1,7 +1,6 @@
 import { useEffect, useState } from "preact/hooks";
-import { clearSessionCookies, getUserTypeFromCookie, getCookie } from "../utils.js";
+import { clearSessionCookies, getUserTypeFromCookie, getCookie, getBaseUrl } from "../utils";
 import { useLocation } from "preact-iso";
-import { getBaseUrl } from "../utils.js";
 
 export function Header() {
   const { route } = useLocation();
@@ -14,10 +13,10 @@ export function Header() {
 
     updateUserType();
 
-    window.addEventListener("userTypeUpdated", updateUserType);
+    globalThis.addEventListener("userTypeUpdated", updateUserType);
 
     return () => {
-      window.removeEventListener("userTypeUpdated", updateUserType);
+      globalThis.removeEventListener("userTypeUpdated", updateUserType);
     };
   }, []);
 
@@ -39,7 +38,7 @@ export function Header() {
     clearSessionCookies();
     setUserType(null);
     route("/login");
-    window.dispatchEvent(new Event("userTypeUpdated"));
+    globalThis.dispatchEvent(new Event("userTypeUpdated"));
   }
 
   return (
