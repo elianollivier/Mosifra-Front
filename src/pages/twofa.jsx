@@ -73,7 +73,7 @@ export function Twofa() {
           <div class="bg-white rounded-xl shadow-lg border border-slate-200 p-8">
             <form onSubmit={handleSubmit} class="space-y-6">
               <div>
-                <label class="block text-sm font-medium text-slate-700 mb-2">
+                <label htmlFor="verificationCode" class="block text-sm font-medium text-slate-700 mb-2">
                   Code de vérification
                 </label>
                 <div class="relative">
