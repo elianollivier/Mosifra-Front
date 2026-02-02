@@ -94,7 +94,7 @@ export default function SubmitInternship() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Titre du stage *</label>
+                <label htmlFor="titreStage" className="block text-sm font-semibold text-gray-900 mb-2">Titre du stage *</label>
                 <input
                   type="text"
                   name="title"
