@@ -78,7 +78,7 @@ export default function SubmitInternship() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="typeFormation" className="block text-sm font-semibold text-gray-900 mb-2">Type de formation *</label>
+                <label htmlFor="courseType" className="block text-sm font-semibold text-gray-900 mb-2">Type de formation *</label>
                 <select
                   name="courseType"
                   value={formData.courseType}
@@ -94,7 +94,7 @@ export default function SubmitInternship() {
               </div>
 
               <div>
-                <label htmlFor="titreStage" className="block text-sm font-semibold text-gray-900 mb-2">Titre du stage *</label>
+                <label htmlFor="internshipTitle" className="block text-sm font-semibold text-gray-900 mb-2">Titre du stage *</label>
                 <input
                   type="text"
                   name="title"
@@ -107,7 +107,7 @@ export default function SubmitInternship() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Description *</label>
+                <label htmlFor="description" className="block text-sm font-semibold text-gray-900 mb-2">Description *</label>
                 <textarea
                   name="description"
                   value={formData.description}
@@ -120,7 +120,7 @@ export default function SubmitInternship() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Lieu *</label>
+                <label htmlFor="location" className="block text-sm font-semibold text-gray-900 mb-2">Lieu *</label>
                 <input
                   type="text"
                   name="location"
@@ -134,7 +134,7 @@ export default function SubmitInternship() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Date de début *</label>
+                  <label htmlFor="startDate" className="block text-sm font-semibold text-gray-900 mb-2">Date de début *</label>
                   <input
                     type="date"
                     name="startDate"
@@ -145,7 +145,7 @@ export default function SubmitInternship() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Date de fin *</label>
+                  <label htmlFor="endDate" className="block text-sm font-semibold text-gray-900 mb-2">Date de fin *</label>
                   <input
                     type="date"
                     name="endDate"
@@ -159,7 +159,7 @@ export default function SubmitInternship() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Durée minimum (semaines)</label>
+                  <label htmlFor="minDuration" className="block text-sm font-semibold text-gray-900 mb-2">Durée minimum (semaines)</label>
                   <input
                     type="number"
                     name="minDuration"
@@ -170,7 +170,7 @@ export default function SubmitInternship() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Durée maximum (semaines)</label>
+                  <label htmlFor="maxDuration" className="block text-sm font-semibold text-gray-900 mb-2">Durée maximum (semaines)</label>
                   <input
                     type="number"
                     name="maxDuration"

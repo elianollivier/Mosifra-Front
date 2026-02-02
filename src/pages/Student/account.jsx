@@ -65,7 +65,7 @@ export default function StudentAccount() {
               </h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
                   <p className="px-4 py-2 bg-gray-50 rounded-lg text-gray-700 flex items-center gap-2">
                     <Mail size={16} />
                     {studentData.email || "—"}
@@ -73,14 +73,14 @@ export default function StudentAccount() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Université</label>
+                  <label htmlFor="university" className="block text-sm font-semibold text-gray-700 mb-2">Université</label>
                   <p className="px-4 py-2 bg-gray-50 rounded-lg text-gray-700">
                     {studentData.university || "—"}
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Cursus</label>
+                  <label htmlFor="curiculum" className="block text-sm font-semibold text-gray-700 mb-2">Cursus</label>
                   <p className="px-4 py-2 bg-gray-50 rounded-lg text-gray-700">
                     {studentData.class_name || "—"}
                   </p>

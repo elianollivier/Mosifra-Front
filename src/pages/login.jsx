@@ -64,7 +64,7 @@ export function LoginPage() {
 
           <div class="bg-white rounded-xl shadow-lg border border-slate-200 p-8">
             <div class="mb-6">
-              <label class="block text-sm font-medium text-slate-700 mb-3">Type de compte</label>
+              <label htmlFor="accountType" class="block text-sm font-medium text-slate-700 mb-3">Type de compte</label>
               <div class="grid grid-cols-3 gap-2">
                 <button
                   type="button"
@@ -101,7 +101,7 @@ export function LoginPage() {
 
             <form onSubmit={handleSubmit} class="space-y-6">
               <div>
-                <label class="block text-sm font-medium text-slate-700 mb-2">Nom d'utilisateur</label>
+                <label htmlFor="uesrname" class="block text-sm font-medium text-slate-700 mb-2">Nom d'utilisateur</label>
                 <div class="relative">
                   <UserRound class="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
                   <input
@@ -115,7 +115,7 @@ export function LoginPage() {
                 </div>
               </div>
               <div>
-                <label class="block text-sm font-medium text-slate-700 mb-2">Mot de passe</label>
+                <label htmlFor="password" class="block text-sm font-medium text-slate-700 mb-2">Mot de passe</label>
                 <div class="relative">
                   <Lock class="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
                   <input

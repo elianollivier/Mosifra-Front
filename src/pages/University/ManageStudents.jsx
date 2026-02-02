@@ -366,7 +366,7 @@ export default function UniversityClasses() {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="className" className="block text-sm font-semibold text-gray-700 mb-2">
                   Nom de la classe
                 </label>
                 <input
@@ -379,7 +379,7 @@ export default function UniversityClasses() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="curiculum" className="block text-sm font-semibold text-gray-700 mb-2">
                   Cursus
                 </label>
 
@@ -394,7 +394,7 @@ export default function UniversityClasses() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="startDate" className="block text-sm font-semibold text-gray-700 mb-2">
                   Début du stage
                 </label>
                 <input
@@ -406,7 +406,7 @@ export default function UniversityClasses() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="endDate" className="block text-sm font-semibold text-gray-700 mb-2">
                   Fin du stage
                 </label>
                 <input
@@ -418,7 +418,7 @@ export default function UniversityClasses() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="minDuration" className="block text-sm font-semibold text-gray-700 mb-2">
                   Durée minimale (semaines)
                 </label>
                 <input
@@ -430,7 +430,7 @@ export default function UniversityClasses() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="maxDuration" className="block text-sm font-semibold text-gray-700 mb-2">
                   Durée maximale (semaines)
                 </label>
                 <input
