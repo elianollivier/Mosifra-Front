@@ -78,7 +78,7 @@ export default function SubmitInternship() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Type de formation *</label>
+                <label htmlFor="typeFormation" className="block text-sm font-semibold text-gray-900 mb-2">Type de formation *</label>
                 <select
                   name="courseType"
                   value={formData.courseType}
