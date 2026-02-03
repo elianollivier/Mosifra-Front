@@ -473,6 +473,7 @@ export default function UniversityClasses() {
               className="bg-white rounded-xl shadow-md p-6 border-l-4 border-vert-mosifra hover:shadow-lg"
             >
               <div
+                type="button"
                 onClick={() => setSelectedClassId(classItem.id)}
                 className="cursor-pointer"
               >

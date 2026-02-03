@@ -80,6 +80,7 @@ export default function ManageCandidates() {
               <div className="flex-1 overflow-y-auto">
                 {mockCandidates.map((candidate) => (
                   <div
+                    type="button"
                     key={candidate.id}
                     onClick={() => setSelectedCandidate(candidate)}
                     className={`px-6 py-4 border-b border-gray-300 cursor-pointer hover:bg-gray-50 transition-all duration-300 transform ${
