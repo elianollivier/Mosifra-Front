@@ -370,6 +370,7 @@ export default function UniversityClasses() {
                   Nom de la classe
                 </label>
                 <input
+                  id="className"
                   type="text"
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
@@ -379,11 +380,12 @@ export default function UniversityClasses() {
               </div>
 
               <div>
-                <label htmlFor="curiculum" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="courseType" className="block text-sm font-semibold text-gray-700 mb-2">
                   Cursus
                 </label>
 
                 <select
+                  id="courseType"
                   value={newCourseType}
                   onChange={(e) => setNewCourseType(e.target.value)}
                   className="w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:border-vert-mosifra placeholder:text-gray-500"
@@ -394,10 +396,11 @@ export default function UniversityClasses() {
               </div>
 
               <div>
-                <label htmlFor="startDate" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="internshipStart" className="block text-sm font-semibold text-gray-700 mb-2">
                   Début du stage
                 </label>
                 <input
+                  id="internshipStart"
                   type="date"
                   value={newInternshipStart}
                   onChange={(e) => setNewInternshipStart(e.target.value)}
@@ -406,10 +409,11 @@ export default function UniversityClasses() {
               </div>
 
               <div>
-                <label htmlFor="endDate" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="internshipEnd" className="block text-sm font-semibold text-gray-700 mb-2">
                   Fin du stage
                 </label>
                 <input
+                  id="internshipEnd"
                   type="date"
                   value={newInternshipEnd}
                   onChange={(e) => setNewInternshipEnd(e.target.value)}
@@ -418,10 +422,11 @@ export default function UniversityClasses() {
               </div>
 
               <div>
-                <label htmlFor="minDuration" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="minLength" className="block text-sm font-semibold text-gray-700 mb-2">
                   Durée minimale (semaines)
                 </label>
                 <input
+                  id="minLength"
                   type="number"
                   value={newMinLength}
                   onChange={(e) => setNewMinLength(e.target.value)}
@@ -430,10 +435,11 @@ export default function UniversityClasses() {
               </div>
 
               <div>
-                <label htmlFor="maxDuration" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="maxLength" className="block text-sm font-semibold text-gray-700 mb-2">
                   Durée maximale (semaines)
                 </label>
                 <input
+                  id="maxLength"
                   type="number"
                   value={newMaxLength}
                   onChange={(e) => setNewMaxLength(e.target.value)}
