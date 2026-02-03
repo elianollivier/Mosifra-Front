@@ -472,7 +472,7 @@ export default function UniversityClasses() {
               key={classItem.id}
               className="bg-white rounded-xl shadow-md p-6 border-l-4 border-vert-mosifra hover:shadow-lg"
             >
-              <div
+              <button
                 type="button"
                 onClick={() => setSelectedClassId(classItem.id)}
                 className="cursor-pointer"
@@ -498,7 +498,7 @@ export default function UniversityClasses() {
                     <Trash2 size={18} />
                   </button>
                 </div>
-              </div>
+              </button>
 
               <div className="relative">
                 <input

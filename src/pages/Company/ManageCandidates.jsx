@@ -79,7 +79,7 @@ export default function ManageCandidates() {
               </div>
               <div className="flex-1 overflow-y-auto">
                 {mockCandidates.map((candidate) => (
-                  <div
+                  <button
                     type="button"
                     key={candidate.id}
                     onClick={() => setSelectedCandidate(candidate)}
@@ -104,7 +104,7 @@ export default function ManageCandidates() {
                           ? "Accepté"
                           : "Rejeté"}
                     </div>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
