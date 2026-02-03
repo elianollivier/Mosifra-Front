@@ -30,8 +30,8 @@ export default function SubmitInternship() {
       course_type: formData.courseType,
       start_date: formData.startDate,
       end_date: formData.endDate,
-      min_internship_length: parseInt(formData.minDuration, 10),
-      max_internship_length: parseInt(formData.maxDuration, 10),
+      min_internship_length: Number.parseInt(formData.minDuration, 10),
+      max_internship_length: Number.parseInt(formData.maxDuration, 10),
       title: formData.title,
       description: formData.description,
       place: formData.location,
@@ -71,126 +71,134 @@ export default function SubmitInternship() {
   }
 
   return (
-      <main className="min-h-screen bg-beige-mosifra p-8">
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-lg border border-gray-300 p-8">
-            <h1 className="text-4xl font-bold text-vert-mosifra mb-8">Proposer un stage</h1>
+    <main className="min-h-screen bg-beige-mosifra p-8">
+      <div className="max-w-2xl mx-auto">
+        <div className="bg-white rounded-lg border border-gray-300 p-8">
+          <h1 className="text-4xl font-bold text-vert-mosifra mb-8">Proposer un stage</h1>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label htmlFor="courseType" className="block text-sm font-semibold text-gray-900 mb-2">Type de formation *</label>
+              <select
+                id="courseType"
+                name="courseType"
+                value={formData.courseType}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900"
+              >
+                <option value="">Sélectionner un type</option>
+                <option value="info">BUT Informatique</option>
+                <option value="tc">BUT TC</option>
+                <option value="gea">BUT GEA</option>
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="title" className="block text-sm font-semibold text-gray-900 mb-2">Titre du stage *</label>
+              <input
+                id="title"
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+                required
+                placeholder="Ex: Développeur web full-stack"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="description" className="block text-sm font-semibold text-gray-900 mb-2">Description *</label>
+              <textarea
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                required
+                rows={5}
+                placeholder="Décrivez les missions, responsabilités, compétences requises, etc."
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 resize-none"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="location" className="block text-sm font-semibold text-gray-900 mb-2">Lieu *</label>
+              <input
+                id="location"
+                type="text"
+                name="location"
+                value={formData.location}
+                onChange={handleChange}
+                required
+                placeholder="Ex: Paris, France"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400"
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Type de formation *</label>
-                <select
-                  name="courseType"
-                  value={formData.courseType}
+                <label htmlFor="startDate" className="block text-sm font-semibold text-gray-900 mb-2">Date de début *</label>
+                <input
+                  id="startDate"
+                  type="date"
+                  name="startDate"
+                  value={formData.startDate}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900"
-                >
-                  <option value="">Sélectionner un type</option>
-                  <option value="info">BUT Informatique</option>
-                  <option value="tc">BUT TC</option>
-                  <option value="gea">BUT GEA</option>
-                </select>
+                />
               </div>
-
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Titre du stage *</label>
+                <label htmlFor="endDate" className="block text-sm font-semibold text-gray-900 mb-2">Date de fin *</label>
                 <input
-                  type="text"
-                  name="title"
-                  value={formData.title}
+                  id="endDate"
+                  type="date"
+                  name="endDate"
+                  value={formData.endDate}
                   onChange={handleChange}
                   required
-                  placeholder="Ex: Développeur web full-stack"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="minDuration" className="block text-sm font-semibold text-gray-900 mb-2">Durée minimum (semaines)</label>
+                <input
+                  id="minDuration"
+                  type="number"
+                  name="minDuration"
+                  value={formData.minDuration}
+                  onChange={handleChange}
+                  placeholder="Ex: 12"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400"
                 />
               </div>
-
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Description *</label>
-                <textarea
-                  name="description"
-                  value={formData.description}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  placeholder="Décrivez les missions, responsabilités, compétences requises, etc."
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 resize-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Lieu *</label>
+                <label htmlFor="maxDuration" className="block text-sm font-semibold text-gray-900 mb-2">Durée maximum (semaines)</label>
                 <input
-                  type="text"
-                  name="location"
-                  value={formData.location}
+                  id="maxDuration"
+                  type="number"
+                  name="maxDuration"
+                  value={formData.maxDuration}
                   onChange={handleChange}
-                  required
-                  placeholder="Ex: Paris, France"
+                  placeholder="Ex: 16"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400"
                 />
               </div>
+            </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Date de début *</label>
-                  <input
-                    type="date"
-                    name="startDate"
-                    value={formData.startDate}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Date de fin *</label>
-                  <input
-                    type="date"
-                    name="endDate"
-                    value={formData.endDate}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Durée minimum (semaines)</label>
-                  <input
-                    type="number"
-                    name="minDuration"
-                    value={formData.minDuration}
-                    onChange={handleChange}
-                    placeholder="Ex: 12"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Durée maximum (semaines)</label>
-                  <input
-                    type="number"
-                    name="maxDuration"
-                    value={formData.maxDuration}
-                    onChange={handleChange}
-                    placeholder="Ex: 16"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400"
-                  />
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-3 rounded-lg font-medium transition-all transform duration-300 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
-              >
-                Proposer le stage
-              </button>
-            </form>
-          </div>
+            <button
+              type="submit"
+              className="w-full py-3 rounded-lg font-medium transition-all transform duration-300 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
+            >
+              Proposer le stage
+            </button>
+          </form>
         </div>
-      </main>
+      </div>
+    </main>
   )
 }
